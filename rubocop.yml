@@ -1,0 +1,72 @@
+require:
+  - rubocop-minitest
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rake
+
+# ============== Layout ==============
+Layout/LineLength:
+  Max: 100
+  AllowedPatterns: ['(\A|\s)#']
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# ============== Style ==============
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '()'
+    '%i':    '()'
+    '%w':    '()'
+
+Style/ArrayCoercion:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  EnforcedStyle: no_braces
+
+Style/OpenStructUse:
+  Enabled: false
+
+# ============== Rails ==============
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/RefuteMethods:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/HelperInstanceVariable:
+  Enabled: false
+
+Rails/EnvironmentVariableAccess:
+  AllowReads: true
+
+# ============== Minitest =============
+
+Minitest/LiteralAsActualArgument:
+  Enabled: false
+
+Minitest/TestMethodName:
+  Enabled: false
+
+Minitest/AssertInDelta:
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Max: 50
+
+Performance/InefficientHashSearch:
+  Enabled: false
