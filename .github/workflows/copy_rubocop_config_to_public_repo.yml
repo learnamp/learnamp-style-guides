@@ -1,0 +1,25 @@
+name: Copy rubocop.yml to learnamp-rubocop-config repository
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      - uses: actions/checkout@v2
+      - name: Copy rubocop.yml to output dir
+        run:  mkdir output && cp rubocop.yml output
+      - name: Commit and push to learnamp/learnamp-rubocop-config
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          SSH_DEPLOY_KEY: ${{ secrets.SSH_DEPLOY_KEY }}
+        with:
+          commit-message: Update
+          source-directory: 'output'
+          destination-github-username: 'learnamp'
+          destination-repository-name: 'learnamp-rubocop-config'
+          target-branch: main
