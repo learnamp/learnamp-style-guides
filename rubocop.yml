@@ -4,10 +4,46 @@ require:
   - rubocop-performance
   - rubocop-rake
 
+AllCops:
+  NewCops: enable
+
+# ============== Naming ==============
+# Breaks API entities
+
+Naming/VariableNumber:
+  Exclude:
+  - test/**/*.rb
+
 # ============== Layout ==============
 Layout/LineLength:
   Max: 100
   AllowedPatterns: ['(\A|\s)#']
+
+# ============== Metrics ==============
+Metrics/BlockLength:
+  Exclude:
+  - lib/tasks/*.rake
+  - test/**/*.rb
+  - "**/*.jbuilder"
+  - app/api/api/v1/*rb
+  - app/admin/**/*rb
+
+Metrics/ClassLength:
+  CountAsOne:
+  - array
+  - hash
+  - heredoc
+  - method_call
+  Exclude:
+  - test/**/*_test.rb
+
+Metrics/MethodLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+  Exclude:
+  - test/**/*_test.rb
 
 Metrics/AbcSize:
   Max: 30
@@ -37,7 +73,24 @@ Style/HashAsLastArrayItem:
 Style/OpenStructUse:
   Enabled: false
 
+Style/AccessorGrouping:
+  Enabled: false
+
+# Sidekiq doesn't permit named params
+Style/OptionalBooleanParameter:
+  AllowedMethods: ['perform']
+
+Style/SymbolProc:
+  Exclude:
+  - app/api/api/v1/entities/**/*.rb
+
 # ============== Rails ==============
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - cypress
 
 Rails/SkipsModelValidations:
   Enabled: false
@@ -54,6 +107,11 @@ Rails/HelperInstanceVariable:
 Rails/EnvironmentVariableAccess:
   AllowReads: true
 
+# Breaks API tests
+Rails/HttpPositionalArguments:
+  Exclude:
+  - test/api/**/*.rb
+
 # ============== Minitest =============
 
 Minitest/LiteralAsActualArgument:
@@ -68,5 +126,6 @@ Minitest/AssertInDelta:
 Minitest/MultipleAssertions:
   Max: 50
 
+# ============== Performance =============
 Performance/InefficientHashSearch:
   Enabled: false
