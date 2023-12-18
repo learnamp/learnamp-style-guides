@@ -1,0 +1,131 @@
+require:
+  - rubocop-minitest
+  - rubocop-rails
+  - rubocop-performance
+  - rubocop-rake
+
+AllCops:
+  NewCops: enable
+
+# ============== Naming ==============
+# Breaks API entities
+
+Naming/VariableNumber:
+  Exclude:
+  - test/**/*.rb
+
+# ============== Layout ==============
+Layout/LineLength:
+  Max: 100
+  AllowedPatterns: ['(\A|\s)#']
+
+# ============== Metrics ==============
+Metrics/BlockLength:
+  Exclude:
+  - lib/tasks/*.rake
+  - test/**/*.rb
+  - "**/*.jbuilder"
+  - app/api/api/v1/*rb
+  - app/admin/**/*rb
+
+Metrics/ClassLength:
+  CountAsOne:
+  - array
+  - hash
+  - heredoc
+  - method_call
+  Exclude:
+  - test/**/*_test.rb
+
+Metrics/MethodLength:
+  CountAsOne:
+    - array
+    - hash
+    - heredoc
+  Exclude:
+  - test/**/*_test.rb
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# ============== Style ==============
+Style/Documentation:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '()'
+    '%i':    '()'
+    '%w':    '()'
+
+Style/ArrayCoercion:
+  Enabled: false
+
+Style/HashAsLastArrayItem:
+  EnforcedStyle: no_braces
+
+Style/OpenStructUse:
+  Enabled: false
+
+Style/AccessorGrouping:
+  Enabled: false
+
+# Sidekiq doesn't permit named params
+Style/OptionalBooleanParameter:
+  AllowedMethods: ['perform']
+
+Style/SymbolProc:
+  Exclude:
+  - app/api/api/v1/entities/**/*.rb
+
+# ============== Rails ==============
+Rails/UnknownEnv:
+  Environments:
+    - production
+    - development
+    - test
+    - cypress
+
+Rails/SkipsModelValidations:
+  Enabled: false
+
+Rails/RefuteMethods:
+  Enabled: false
+
+Rails/LexicallyScopedActionFilter:
+  Enabled: false
+
+Rails/HelperInstanceVariable:
+  Enabled: false
+
+Rails/EnvironmentVariableAccess:
+  AllowReads: true
+
+# Breaks API tests
+Rails/HttpPositionalArguments:
+  Exclude:
+  - test/api/**/*.rb
+
+# ============== Minitest =============
+
+Minitest/LiteralAsActualArgument:
+  Enabled: false
+
+Minitest/TestMethodName:
+  Enabled: false
+
+Minitest/AssertInDelta:
+  Enabled: false
+
+Minitest/MultipleAssertions:
+  Max: 50
+
+# ============== Performance =============
+Performance/InefficientHashSearch:
+  Enabled: false
