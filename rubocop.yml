@@ -17,7 +17,7 @@ Naming/VariableNumber:
 # ============== Layout ==============
 Layout/LineLength:
   Max: 100
-  AllowedPatterns: ['(\A|\s)#']
+  AllowedPatterns: [(\A|\s)(#|test|it|describe)]
 
 # ============== Metrics ==============
 Metrics/BlockLength:
