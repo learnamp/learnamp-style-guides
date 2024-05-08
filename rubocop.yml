@@ -16,6 +16,9 @@ Naming/VariableNumber:
 
 Naming/FileName:
   ExpectMatchingDefinition: true
+  Exclude:
+  - test/units/**/*.rb
+  - test/shared_assertions/**/*.rb
 
 # ============== Layout ==============
 Layout/LineLength:
