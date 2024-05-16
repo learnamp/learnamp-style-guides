@@ -19,6 +19,7 @@ Naming/FileName:
   Exclude:
   - test/units/**/*.rb
   - test/shared_assertions/**/*.rb
+  - lib/tasks/**/*.rake
 
 # ============== Layout ==============
 Layout/LineLength:
