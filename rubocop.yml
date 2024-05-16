@@ -20,6 +20,7 @@ Naming/FileName:
   - test/units/**/*.rb
   - test/shared_assertions/**/*.rb
   - lib/tasks/**/*.rake
+  - test/lib/tasks/**/*.rb
 
 # ============== Layout ==============
 Layout/LineLength:
