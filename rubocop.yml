@@ -26,6 +26,10 @@ Layout/LineLength:
   Max: 100
   AllowedPatterns: [(\A|\s)(#|test|it|describe)]
 
+# ============== Lint ==============
+Lint/SymbolConversion:
+  Enabled: false
+
 # ============== Metrics ==============
 Metrics/BlockLength:
   Exclude:
