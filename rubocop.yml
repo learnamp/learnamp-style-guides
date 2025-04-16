@@ -1,7 +1,5 @@
 plugins:
   - rubocop-minitest
-
-require:
   - rubocop-rails
   - rubocop-performance
   - rubocop-rake
